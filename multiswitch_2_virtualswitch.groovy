@@ -25,12 +25,12 @@ definition(
 
 
 preferences {
-	page(name: "mainDevice")
-	page(name: "virtualDetails")
+	page(name: "mainDevice", install:true)
+	page(name: "virtualDetails", install:true)
 }
 
 def mainDevice() {
-	dynamicPage(name: "mainDevice", title: "Setup virtual app and multi-switch device", nextPage: "virtualDetails") {
+	dynamicPage(name: "mainDevice", title: "Setup virtual app and multi-switch device", nextPage: "virtualDetails", uninstall: true, install:true) {
         section {
             input "master", "capability.switch", multiple: false, required: true, title: "Choose the device with multiple switches"
             input "num_sw", "number", multiple: false, required: true, title: "How many switches?"
@@ -43,7 +43,7 @@ def mainDevice() {
 }
 
 def virtualDetails() {
-	dynamicPage(name: "virtualDetails", title: "How to map switches:") {
+	dynamicPage(name: "virtualDetails", title: "How to map switches:", uninstall: true, install:true) {
         section {
 			for ( i in 1..num_sw) { input name: "switch$i", type: "capability.switch", title: "Virtual SW $i", multiple: false, required: false }
         }
