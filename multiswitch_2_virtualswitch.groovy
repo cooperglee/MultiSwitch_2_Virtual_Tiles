@@ -25,15 +25,14 @@ definition(
 
 
 preferences {
-	page(name: "mainDevice", install:true)
-	page(name: "virtualDetails", install:true)
+	page(name: "mainDevice", uninstall: true, install:true)
+	page(name: "virtualDetails", uninstall: true, install:true)
 }
 
 def mainDevice() {
 	dynamicPage(name: "mainDevice", title: "Setup virtual app and multi-switch device", nextPage: "virtualDetails", uninstall: true, install:true) {
         section {
             input "master", "capability.switch", multiple: false, required: true, title: "Choose the device with multiple switches"
-            input "num_sw", "number", multiple: false, required: true, title: "How many switches?"
 
             label title: "Assign a name for this virtual tile handler", required: false
             icon title: "Choose an icon for $app.label", required: false, defaultValue: "st.Lighting.light13-icn"
@@ -45,7 +44,16 @@ def mainDevice() {
 def virtualDetails() {
 	dynamicPage(name: "virtualDetails", title: "How to map switches:", uninstall: true, install:true) {
         section {
-			for ( i in 1..num_sw) { input name: "switch$i", type: "capability.switch", title: "Virtual SW $i", multiple: false, required: false }
+            input "switch1", "capability.switch", multiple: true, required: false, title: "Switch Mapping 1"
+            input "switch2", "capability.switch", multiple: true, required: false, title: "Switch Mapping 2"
+            input "switch3", "capability.switch", multiple: true, required: false, title: "Switch Mapping 3"
+            input "switch4", "capability.switch", multiple: true, required: false, title: "Switch Mapping 4"
+            input "switch5", "capability.switch", multiple: true, required: false, title: "Switch Mapping 5"
+            input "switch6", "capability.switch", multiple: true, required: false, title: "Switch Mapping 6"
+            input "switch7", "capability.switch", multiple: true, required: false, title: "Switch Mapping 7"
+            input "switch8", "capability.switch", multiple: true, required: false, title: "Switch Mapping 8"
+            input "switch9", "capability.switch", multiple: true, required: false, title: "Switch Mapping 9"
+            input "switch10", "capability.switch", multiple: true, required: false, title: "Switch Mapping 10"
         }
 	}
 }
