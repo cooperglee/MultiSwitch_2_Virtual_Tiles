@@ -25,12 +25,12 @@ definition(
 
 
 preferences {
-	page(name: "mainDevice", uninstall: true, install:true)
+	page(name: "mainDevice", uninstall: true, install:false)
 	page(name: "virtualDetails", uninstall: true, install:true)
 }
 
 def mainDevice() {
-	dynamicPage(name: "mainDevice", title: "Setup virtual app and multi-switch device", nextPage: "virtualDetails", uninstall: true, install:true) {
+	dynamicPage(name: "mainDevice", title: "Setup virtual app and multi-switch device", nextPage: "virtualDetails", uninstall: true, install:false) {
         section {
             input "master", "capability.switch", multiple: false, required: true, title: "Choose the device with multiple switches"
 
